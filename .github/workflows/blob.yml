@@ -9,9 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: mkdir -p path/to/artifact
-      - run: echo hello > path/to/artifact/world.txt
+      - run: cp ./pdf/* path/to/artifact/
       - uses: fixpoint/azblob-upload-artifact@v4        
         with:
           connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          name: index.html
+          container_name: '$web'
           path: path/to/artifact
