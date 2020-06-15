@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: StateOfCalifornia/StorageDeploy@master
-      - uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+      - run: mkdir -p path/to/artifact
+      - run: echo hello > path/to/artifact/world.txt
+      - uses: fixpoint/azblob-upload-artifact@v4        
         with:
-          source_dir: 'public'
-          container_name: '$web'
-          connection_string: ${{ secrets.ConnectionString }}
-          sync: true
+          connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          name: index.html
+          path: path/to/artifact
