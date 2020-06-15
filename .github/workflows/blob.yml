@@ -1,7 +1,8 @@
-on: [push]
-push:
-  branches:
-    - master
+name: Upload To Azure Blob Storage
+on:
+  push:
+    branches:
+      - master
 jobs:
   upload:
     runs-on: ubuntu-latest
