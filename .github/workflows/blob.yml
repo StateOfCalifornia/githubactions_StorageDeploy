@@ -10,8 +10,9 @@ jobs:
       - uses: actions/checkout@v1
       - run: mkdir -p path/to/artifact
       - run: cp ./pdf/* path/to/artifact/
-      - uses: StateOfCalifornia/StorageDeploy@v4        
+      - uses: fixpoint/azblob-upload-artifact@v4        
         with:
           connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           container: '$web'
           path: path/to/artifact
+          name: pdf
